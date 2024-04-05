@@ -1,0 +1,83 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/addStudent.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Admin Page</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/saveStudent" method="post" enctype="multipart/form-data>
+            <h2>Create Student Record </h2>
+            <label for="firstname">FirstName:</label>
+            <input type="text" id="firstname" name="firstname" required>
+
+            <label for="lastname">LastName:</label>
+            <input type="text" id="lastname" name="lastname" required>
+
+            <label for="file">Upload Files:</label>
+            <input type="file" id="file" name="file" accept=".xlsx" >
+
+            <button type="button" class="uploadButton" onclick="uploadFiles()">Upload Files</button>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+  
+
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" required>
+            <button type="button" onclick="sendOTP()">Send OTP</button>
+            <br>
+
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" name="otp" required>
+            <button type="button" onclick="verifyOTP()">Verify OTP</button>
+
+            <button class="saveStudent" type="submit">Save Student</button>
+        </form>
+
+        
+        <div>
+            <button class="backButton" onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+    
+    <script >
+        function goBack() {  
+            window.history.back();
+        }
+
+         // Function to send OTP
+    function sendOTP() {
+      const phoneNumber = $('#phoneNumber').val();
+
+      // Make an AJAX request to your Node.js server to send OTP
+      $.post('/send-otp', { phoneNumber }, function (data) {
+        alert(data); // Display success or error message
+      });
+    }
+
+    function verifyOTP() {
+      const phoneNumber = $('#phoneNumber').val();
+      const userEnteredOTP = $('#otp').val();
+      $.post('/verify-otp', { phoneNumber, otp: userEnteredOTP }, function (data) {
+        console.log("verify otp result" , data);
+        alert(data); // Display success or error message
+      });
+    } 
+
+    function uploadFiles() {
+            // Trigger the file input click
+            $('#files').click();
+        }
+
+    </script>
+</body>
+</html>

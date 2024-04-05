@@ -1,0 +1,70 @@
+Create a middleware function to handle all the request whether it is authenticated
+
+
+Steps to create route saveAdminUser (Create)
+Backend
+1.Extract the values from req body.
+2. Hash the password using the bcrypy module.
+3. Generate auth token by using the jwt module .
+4. Create a token object and attach it to admin user profile.
+5. Use try catch block and try to insert in the mongo db
+6. If insertion is succesfull , use rabbitmq to send welcome email to the admin user 
+    for account confirmation.
+7. Handle errors and send error response
+8. If data is succesfully inserted  then send success as response.
+
+FrontEnd
+1. After sending request a spinner should be loading.
+2. If success show success alert .
+2.2 Set the token received from server , set it in a cookie , set expiration time and also
+    write logic to handle expiration of tokens
+3. If failed show the error message.
+
+---------------------------------------------------------------
+adminLogin route (Single Read)
+Backend
+1.Extract the values from req body.
+1.1 Check whether the user exists in db , If exists then fetch the profile
+2.Fetch the hashed password from db by giving username or email
+3. use bcrypt module compare method to compare the password values.
+4. Handle errors and send error response
+5. If password are correct  then send success as response.
+
+Frontend
+1. If success then redirect to the Admin console page.
+2. If error show error message and show password error message.
+
+----------------------------------------------------------------
+listAdminUsers route.(Multiple read)
+Backend.
+1. Fetch all the admins from mongodb and send it to response
+2. Handle errors.
+
+Frontend:
+1. After getting the adminProfiles from backend store it in a state.
+2. Iterate the state and display all the profiles on the ui.
+3. If clicked on profile give modal to click to delete profile.
+----------------------------------------------------------------
+
+updateAdminUser (Update)
+Backend
+
+1. Use try catch block to fetch the user in the mongo db
+2. Edit the values obtained from req body
+3. Save it in database
+7. Handle errors and send error response
+8. If data is succesfully updated  then send success as response.
+
+FrontEnd
+1. In admin console page give update profile button.
+2. Show form to which fields to update .
+3. Send req to backend.
+4. If success result show the succes alert and reflect the changed values.
+
+---------------------------------------------------------------
+
+----------------------------------------------------------------
+adminLogout route (Delete )
+Backend
+1. If a button is clicked , then delete the existing admin from db
+2. Handle errors and success and send the response.

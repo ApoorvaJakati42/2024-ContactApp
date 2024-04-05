@@ -1,0 +1,54 @@
+/* style.css */
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(159, 130, 130);
+}
+
+.container {
+    background-color: #ddeae8;
+    padding: 100px;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.backButton {
+    margin-top: 5px;
+    align-content: center;
+    margin-left: 30%;
+    background-color: red;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 16px;
+    font-size: 20px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+h2 { 
+    font-size: 30px;
+    color: maroon;
+}

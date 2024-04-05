@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <meta name="authorization" content="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJoYXJndXUiLCJpYXQiOjE2OTk4Njk0MjYsImV4cCI6MTY5OTg2OTQzMX0.CdsMwBYeEiFwRVmKBVcxZM2UkYtAWClSlcof9t_QH_o">
+    <title>Admin Login</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/login" method="post">
+            <h2 class="pagetitle">Admin Login</h2>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+
+            
+        </form>
+
+        
+            <script>
+                
+                function redirectToAnotherPage() {
+                    // Redirect to the '/redirected' route
+                    console.log("href " , window.location.href);
+                    window.location.href = '/addAdmin';
+                }
+
+                function redirectToStudentPage() {
+                    // Redirect to the '/redirected' route
+                    console.log("href " , window.location.href);
+                    window.location.href = '/addStudent';
+                }
+            </script>
+    </div>
+    <div class="adminButtonContainer">
+        <button class="adminButton" onclick="redirectToAnotherPage()">Add New Admin</button>
+    </div>
+
+    <div class="studentButtonContainer">
+        <button class="adminButton"  onclick="redirectToStudentPage()">New Student</button>
+    </div>
+
+    
+</body>
+</html>
