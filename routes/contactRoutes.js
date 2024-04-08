@@ -128,6 +128,7 @@ router.get('/contacts', async (req, res) => {
     const { id } = req.params;
 
     console.log("Contact Id " , id);
+    console.log("Request body" , req.body);
     try {
       const updatedContact = await Contact.findOneAndUpdate({ id }, req.body, { new: true });
       if (!updatedContact) {
